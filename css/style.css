@@ -37,3 +37,56 @@ body>* {
   border-radius: 15px;
   box-shadow: 12px 12px 12px 2px rgb(63, 76, 119);
 }
+
+/*------ MAIN ELEMENT ------*/
+
+.content {
+  font-family: "Lato";
+  margin: 30px auto;
+}
+
+/*------ MAIN ELEMENT [CONTAINER = 01]------*/
+
+.container-box {
+  height: 600px;
+  width: 600px;
+  background-color: coral;
+  margin: 0 auto;
+}
+
+/*------ MAIN ELEMENT [CONTAINER = 02]------*/
+
+.container-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/**====== MAIN ELEMENT [BUTTONS CONTAINER] ======**/
+
+.container-button-left,
+.container-button-center,
+.container-button-right {
+  background-color: hsl(360, 100%, 0%);
+  color: hsl(360, 100%, 100%);
+  padding: 30px 15px;
+}
+
+/***====== MAIN ELEMENT [LEFT BUTTONS CONTAINER] ======***/
+
+.container-button-left {
+  flex-basis: 40%;
+}
+
+/***====== MAIN ELEMENT [CENTER BUTTON CONTAINER] ======***/
+
+.container-button-center {
+  flex-basis: 10%;
+}
+
+/***====== MAIN ELEMENT [RIGHT BUTTONS CONTAINER] ======***/
+
+.container-button-right {
+  flex-basis: 40%;
+}
