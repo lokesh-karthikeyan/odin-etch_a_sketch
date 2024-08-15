@@ -6,6 +6,9 @@
 
 html {
   box-sizing: border-box;
+  font-size: 24px;
+  font-family: "Prompt", "Lato", sans-serif;
+  background: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
 }
 
 *,
@@ -17,4 +20,20 @@ html {
 * {
   margin: 0;
   padding: 0;
+}
+
+body>* {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*------ HEADER ELEMENT ------*/
+
+.page-title,
+.footer {
+  background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+  color: hsl(194, 100%, 91%);
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 12px 12px 12px 2px rgb(63, 76, 119);
 }
