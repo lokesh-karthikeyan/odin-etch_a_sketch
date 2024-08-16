@@ -71,12 +71,43 @@ body>* {
   background-color: hsl(360, 100%, 0%);
   color: hsl(360, 100%, 100%);
   padding: 30px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-button-left,
+.container-button-right {
+  position: relative;
+  flex-basis: 40%;
+}
+
+.container-button-left>label,
+.container-button-right>label {
+  position: relative;
+  z-index: 5;
+}
+
+label>input {
+  /* appearance: none; */
+}
+
+.slider {
+  /* background-color: oklch(85.78% 0.18 154.94); */
+  outline: solid 5px hsl(223, 88%, 62%);
+  background-color: hsl(223, 88%, 62%);
+  box-shadow: 0 0 0 10px hsla(0, 0%, 0%);
+  width: 33.33%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 1;
 }
 
 /***====== MAIN ELEMENT [LEFT BUTTONS CONTAINER] ======***/
 
 .container-button-left {
-  flex-basis: 40%;
+  /* flex-basis: 40%; */
 }
 
 /***====== MAIN ELEMENT [CENTER BUTTON CONTAINER] ======***/
@@ -88,5 +119,5 @@ body>* {
 /***====== MAIN ELEMENT [RIGHT BUTTONS CONTAINER] ======***/
 
 .container-button-right {
-  flex-basis: 40%;
+  /* flex-basis: 40%; */
 }
