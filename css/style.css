@@ -81,97 +81,98 @@ body>* {
 
 .outer-container-bottom {
   margin-top: 30px;
+  font-size: 1.1rem;
 }
-
-/*------ MAIN ELEMENT [CONTAINER = 02]------*/
-
-.container-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-}
-
-/**====== MAIN ELEMENT [BUTTONS CONTAINER] ======**/
 
 .container-button-left,
-.container-button-center,
 .container-button-right {
-  background-color: hsl(360, 100%, 0%);
   color: hsl(360, 100%, 100%);
-  padding: 30px 15px;
   display: flex;
   justify-content: space-around;
+  flex-basis: 30%;
+  border: solid 10px oklch(62.67% 0.221 292.59);
 }
 
 .container-button-left,
-.container-button-right {
-  position: relative;
-  flex-basis: 40%;
+.container-button-right,
+.select-size,
+.container-button-slider {
+  background-color: hsl(0, 0%, 0%);
+  color: oklch(87.16% 0.053 292.59);
 }
 
-.container-button-left>label,
+.select-size,
+.container-button-right {
+  padding: 30px 15px;
+}
+
+.container-button-slider>label,
 .container-button-right>label {
   position: relative;
   z-index: 5;
   cursor: pointer;
 }
 
+/**====== MAIN ELEMENT CONTENTS [CONTAINER - 02 || LEFT SECTION] ======**/
+
+.select-size {
+  width: 100%;
+  border: none;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+/**====== MAIN ELEMENT CONTENTS [CONTAINER - 02 || MIDDLE SECTION] ======**/
+
+.container-button-slider {
+  flex-basis: 100%;
+  border: solid 10px oklch(85.78% 0.18 154.94);
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slider {
+  outline: solid 5px oklch(62.67% 0.221 292.59);
+  background-color: oklch(62.67% 0.221 292.59);
+  box-shadow: 0 0 0 15px hsla(0, 0%, 0%);
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  transition: all .3s ease-in-out;
+}
+
 label>input {
   appearance: none;
 }
 
-/* label>input[type="color"] { */
-/* display: none; */
-/* } */
-
-.slider {
-  /* background-color: oklch(85.78% 0.18 154.94); */
-  outline: solid 5px hsl(223, 88%, 62%);
-  background-color: hsl(223, 88%, 62%);
-  box-shadow: 0 0 0 10px hsla(0, 0%, 0%);
-  width: 33.33%;
-  height: 100%;
-  /* position: absolute; */
-  top: 0;
-  /* left: 0px; */
-  z-index: 1;
-}
-
 label:has(.erase:checked)~.slider {
-  left: 20px;
-}
-
-label:has(.fill:checked)~.slider {
-  left: calc(33.33%);
+  transform: translate(calc(-100% - 8px));
 }
 
 label:has(.reset:checked)~.slider {
-  left: calc(66.66% - 20px);
+  transform: translate(calc(100% + 8px));
 }
 
-label:has(.trail-mode:checked)~.slider {
-  left: 20px;
+/**====== MAIN ELEMENT CONTENTS [CONTAINER - 02 || RIGHT SECTION] ======**/
+
+.container-button-right label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
 }
 
-label:has(.rgb-mode:checked)~.slider {
-  left: calc(66.66% - 20px);
+.color-picker-icon {
+  width: 25px;
+  background-color: hsl(0, 0%, 0%);
+  display: inline-block;
+  margin-left: 8px;
+  outline: solid 5px oklch(62.67% 0.221 292.59);
 }
-
-/***====== MAIN ELEMENT [LEFT BUTTONS CONTAINER] ======***/
-
-/* .container-button-left { */
-/* flex-basis: 40%; */
-/* } */
-
-/***====== MAIN ELEMENT [CENTER BUTTON CONTAINER] ======***/
-
-/* .container-button-center { */
-/*   flex-basis: 10%; */
-/* } */
-
-/***====== MAIN ELEMENT [RIGHT BUTTONS CONTAINER] ======***/
-
-/* .container-button-right { */
-/* flex-basis: 40%; */
-/* } */
