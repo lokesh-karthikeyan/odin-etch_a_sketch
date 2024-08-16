@@ -64,7 +64,7 @@ body>* {
 .trail-mode,
 .rgb-mode {
   background-color: hsl(0, 0%, 0%);
-  border: solid 10px hsl(223, 88%, 62%);
+  border: solid 10px hsl(217, 90%, 52%);
   color: oklch(94.22% 0.039 147.53);
   writing-mode: vertical-lr;
   text-orientation: upright;
@@ -74,6 +74,17 @@ body>* {
   font-size: 1rem;
   cursor: pointer;
   font-family: "Prompt";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: hsl(0, 100%, 42%);
+  margin: 25px 0;
 }
 
 /**------ MAIN ELEMENT CONTENTS [CONTAINER - 02] ------**/
@@ -126,7 +137,7 @@ body>* {
 
 .container-button-slider {
   flex-basis: 100%;
-  border: solid 10px oklch(85.78% 0.18 154.94);
+  border: solid 10px hsl(194, 90%, 52%);
   position: relative;
   display: flex;
   justify-content: space-around;
