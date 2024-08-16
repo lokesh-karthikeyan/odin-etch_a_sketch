@@ -6,7 +6,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 24px;
+  font-size: 20px;
   font-family: "Prompt", "Lato", sans-serif;
   background: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
 }
@@ -23,7 +23,7 @@ html {
 }
 
 body>* {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -48,8 +48,8 @@ body>* {
 /*------ MAIN ELEMENT [CONTAINER = 01]------*/
 
 .container-box {
-  height: 600px;
-  width: 600px;
+  height: 700px;
+  width: 700px;
   background-color: coral;
   margin: 0 auto;
 }
@@ -72,7 +72,7 @@ body>* {
   color: hsl(360, 100%, 100%);
   padding: 30px 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .container-button-left,
@@ -85,10 +85,15 @@ body>* {
 .container-button-right>label {
   position: relative;
   z-index: 5;
+  cursor: pointer;
 }
 
 label>input {
-  /* appearance: none; */
+  appearance: none;
+}
+
+label>input[type="color"] {
+  /* display: none; */
 }
 
 .slider {
@@ -100,24 +105,44 @@ label>input {
   height: 100%;
   position: absolute;
   top: 0;
-  left: 20px;
+  /* left: 0px; */
   z-index: 1;
+}
+
+label:has(.erase:checked)~.slider {
+  left: 20px;
+}
+
+label:has(.fill:checked)~.slider {
+  left: calc(33.33%);
+}
+
+label:has(.reset:checked)~.slider {
+  left: calc(66.66% - 20px);
+}
+
+label:has(.trail-mode:checked)~.slider {
+  left: 20px;
+}
+
+label:has(.rgb-mode:checked)~.slider {
+  left: calc(66.66% - 20px);
 }
 
 /***====== MAIN ELEMENT [LEFT BUTTONS CONTAINER] ======***/
 
-.container-button-left {
-  /* flex-basis: 40%; */
-}
+/* .container-button-left { */
+/* flex-basis: 40%; */
+/* } */
 
 /***====== MAIN ELEMENT [CENTER BUTTON CONTAINER] ======***/
 
-.container-button-center {
-  flex-basis: 10%;
-}
+/* .container-button-center { */
+/*   flex-basis: 10%; */
+/* } */
 
 /***====== MAIN ELEMENT [RIGHT BUTTONS CONTAINER] ======***/
 
-.container-button-right {
-  /* flex-basis: 40%; */
-}
+/* .container-button-right { */
+/* flex-basis: 40%; */
+/* } */
