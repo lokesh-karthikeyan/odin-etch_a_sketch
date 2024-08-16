@@ -31,11 +31,10 @@ body>* {
 
 .page-title,
 .footer {
-  background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
-  color: hsl(194, 100%, 91%);
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(52, 89%, 96%);
   text-align: center;
-  border-radius: 15px;
-  box-shadow: 12px 12px 12px 2px rgb(63, 76, 119);
+  border: solid 10px hsl(51, 84%, 66%);
 }
 
 /*------ MAIN ELEMENT ------*/
@@ -107,7 +106,8 @@ body>* {
 }
 
 .container-button-slider>label,
-.container-button-right>label {
+.container-button-right>label,
+.container-button-right label input {
   position: relative;
   z-index: 5;
   cursor: pointer;
@@ -175,4 +175,12 @@ label:has(.reset:checked)~.slider {
   display: inline-block;
   margin-left: 8px;
   outline: solid 5px oklch(62.67% 0.221 292.59);
+}
+
+/*------ FOOTER ELEMENT CONTENTS ------*/
+
+.footer {
+  font-family: "Kalam", monospace, sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
