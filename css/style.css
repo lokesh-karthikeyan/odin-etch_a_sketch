@@ -22,6 +22,13 @@ html {
   padding: 0;
 }
 
+body {
+  min-height: 100vh;
+  max-width: 1100px;
+  background-color: oklch(57.16% 0.145 0);
+  margin: 0 auto;
+}
+
 body>* {
   max-width: 1000px;
   margin: 0 auto;
@@ -57,7 +64,8 @@ body>* {
 .container-box {
   height: 700px;
   min-width: 700px;
-  background-color: coral;
+  background-color: hsl(360, 100%, 100%);
+  border: solid 10px oklch(43.68% 0.068 193.06);
   margin: 0 auto;
 }
 
