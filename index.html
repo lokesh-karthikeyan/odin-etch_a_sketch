@@ -14,50 +14,90 @@
   </header>
 
   <main class="content">
-    <div class="container-box"></div>
-    <div class="container-button">
+    <div class="outer-container-top">
+      <button class="trail-mode">TRAIL MODE</button>
+      <div class="container-box"></div>
+      <button class="rgb-mode">RGB MODE</button>
+    </div>
+
+    <div class="outer-container-bottom">
       <div class="container-button-left">
+        <button class="select-size">SIZE</button>
+      </div>
+
+      <div class="container-button-slider">
         <label>
-          <input type="radio" name="draw">
+          <input type="radio" name="draw" class="erase" value="erase">
           Eraser
         </label>
 
         <label>
-          <input type="radio" name="draw">
+          <input type="radio" name="draw" class="fill" value="fill">
           Fill
         </label>
 
         <label>
-          <input type="radio" name="draw">
+          <input type="radio" name="draw" class="reset" value="reset">
           Reset
         </label>
 
         <span class="slider">&nbsp;</span>
       </div>
 
-      <div class="container-button-center">
-        <button class="select-size">SIZE</button>
-      </div>
-
       <div class="container-button-right">
         <label>
-          <input type="radio" name="colors">
-          Trail mode
-        </label>
-
-        <label>
-          <input type="color" name="colors">
           Choose <span class="color-picker-icon">&nbsp;</span>
-        </label>
+          <input type="color" name="colors" class="color-picker" value="#000000">
 
-        <label>
-          <input type="radio" name="colors">
-          RGB mode
         </label>
-
-        <span class="slider">&nbsp;</span>
       </div>
     </div>
+
+    <!-- </div> -->
+    <!-- <div class="container-box"></div> -->
+    <!-- <div class="container-button"> -->
+    <!--   <div class="container-button-left"> -->
+    <!--     <label> -->
+    <!--       <input type="radio" name="draw" class="erase" value="erase"> -->
+    <!--       Eraser -->
+    <!--     </label> -->
+    <!---->
+    <!--     <label> -->
+    <!--       <input type="radio" name="draw" class="fill" value="fill"> -->
+    <!--       Fill -->
+    <!--     </label> -->
+    <!---->
+    <!--     <label> -->
+    <!--       <input type="radio" name="draw" class="reset" value="reset"> -->
+    <!--       Reset -->
+    <!--     </label> -->
+    <!---->
+    <!--     <span class="slider">&nbsp;</span> -->
+    <!--   </div> -->
+
+    <!-- <div class="container-button-center"> -->
+    <!-- <button class="select-size">SIZE</button> -->
+    <!-- </div> -->
+
+    <!-- <div class="container-button-right"> -->
+    <!--   <label> -->
+    <!--     <input type="radio" name="colors" class="trail-mode" value="trail-mode"> -->
+    <!--     Trail mode -->
+    <!--   </label> -->
+    <!---->
+    <!--   <label> -->
+    <!--     <input type="color" name="colors" class="color-picker" value="#000000"> -->
+    <!--     Choose <span class="color-picker-icon">&nbsp;</span> -->
+    <!--   </label> -->
+    <!---->
+    <!--   <label> -->
+    <!--     <input type="radio" name="colors" class="rgb-mode" value="rgb-mode"> -->
+    <!--     RGB mode -->
+    <!--   </label> -->
+    <!---->
+    <!--   <span class="slider">&nbsp;</span> -->
+    <!-- </div> -->
+    <!-- </div> -->
   </main>
 
   <footer class="footer">
