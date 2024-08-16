@@ -85,6 +85,7 @@ body>* {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all .4s ease-in-out;
 }
 
 .switch-indicator {
@@ -109,6 +110,7 @@ body>* {
   justify-content: space-around;
   flex-basis: 30%;
   border: solid 10px oklch(62.67% 0.221 292.59);
+  transition: all .4s ease-in-out;
 }
 
 .container-button-left,
@@ -202,4 +204,25 @@ label:has(.reset:checked)~.slider {
   font-family: "Kalam", monospace, sans-serif;
   font-weight: bold;
   letter-spacing: 2px;
+}
+
+/******------ MISC RULES ------******/
+
+/*------ HOVER OVER RULES ------*/
+
+.trail-mode:hover,
+.rgb-mode:hover,
+.container-button-left:hover,
+.container-button-right:hover {
+  border: solid 10px #82ff62;
+}
+
+.trail-mode:hover,
+.rgb-mode:hover {
+  transform: scale(1.02);
+}
+
+.container-button-left:hover,
+.container-button-right:hover {
+  transform: scale(1.05);
 }
