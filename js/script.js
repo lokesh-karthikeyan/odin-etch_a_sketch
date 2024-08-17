@@ -132,3 +132,41 @@ function isTrailMode(e) {
     iterator = 0;
   }
 }
+
+function isRgbMode(e) {
+  let hexColorCharacters = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+  ];
+  let hashForHexColor = "#";
+  let targetElement = e.target;
+
+  if (!(targetElement.className === "columns")) {
+    return 0;
+  }
+
+  for (let index = 0; index < 6; index++) {
+    let position = randomNumberGenerator(hexColorCharacters.length);
+    hashForHexColor += hexColorCharacters[position];
+  }
+  targetElement.style.backgroundColor = hashForHexColor;
+}
+
+function randomNumberGenerator(length) {
+  let randomNumber = Math.floor(Math.random() * length);
+  return randomNumber;
+}
