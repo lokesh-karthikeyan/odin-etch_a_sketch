@@ -67,6 +67,8 @@ body>* {
   background-color: hsl(360, 100%, 100%);
   border: solid 10px oklch(43.68% 0.068 193.06);
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .trail-mode,
@@ -88,11 +90,11 @@ body>* {
   transition: all .4s ease-in-out;
 }
 
-.switch-indicator {
+.trail-mode-indicator,
+.rgb-mode-indicator {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: hsl(0, 100%, 42%);
   margin: 25px 0;
 }
 
@@ -225,4 +227,26 @@ label:has(.reset:checked)~.slider {
 .container-button-left:hover,
 .container-button-right:hover {
   transform: scale(1.05);
+}
+
+/*------ MODE INDICATOR [APPLIED DYNAMICALLY] ------*/
+
+.mode-on {
+  background-color: hsl(127, 100%, 57%);
+}
+
+.mode-off {
+  background-color: hsl(0, 100%, 42%);
+}
+
+/*------ DYNAMICALLY CREATED GRIDS ------*/
+
+.rows {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.columns {
+  flex-basis: 100%;
+  border: solid 1px hsl(0, 0%, 0%);
 }
