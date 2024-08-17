@@ -91,3 +91,44 @@ function unsetMode(targetElement) {
     elem.classList.remove("mode-on");
   }
 }
+
+let iterator = 0;
+
+function isTrailMode(e) {
+  let opacityHexValues = [
+    "FF",
+    "F2",
+    "E6",
+    "D9",
+    "CC",
+    "BF",
+    "B3",
+    "A6",
+    "99",
+    "8C",
+    "80",
+    "73",
+    "66",
+    "59",
+    "4D",
+    "40",
+    "33",
+    "26",
+    "1A",
+    "0D",
+    "00",
+  ];
+
+  let targetElement = e.target;
+
+  if (!(targetElement.className === "columns")) {
+    return 0;
+  }
+
+  targetElement.style.backgroundColor = color + opacityHexValues[iterator];
+  iterator++;
+
+  if (iterator === opacityHexValues.length) {
+    iterator = 0;
+  }
+}
