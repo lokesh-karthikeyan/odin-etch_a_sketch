@@ -43,17 +43,51 @@ function compareModeStatus(targetElement) {
     ...document.getElementsByClassName("rgb-mode-indicator"),
   ];
 
-  let trailIndicatorClass;
-  let rgbIndicatorClass;
+  let classOfTrailMode;
+  let classOfRgbMode;
 
   for (index = 0; index < 1; index++) {
-    trailIndicatorClass = trailModeIndicator[index].className;
-    rgbIndicatorClass = rgbModeIndicator[index].className;
+    classOfTrailMode = trailModeIndicator[index].className;
+    classOfRgbMode = rgbModeIndicator[index].className;
   }
 
-  console.log(rgbIndicatorClass);
-  console.log(trailIndicatorClass);
-
   if (targetElement.className.includes("trail-mode")) {
+    if (classOfTrailMode.includes("mode-on")) {
+      unsetMode(trailModeIndicator);
+    }
+
+    if (classOfTrailMode.includes("mode-off")) {
+      if (classOfRgbMode.includes("mode-on")) {
+        unsetMode(rgbModeIndicator);
+      }
+      setMode(trailModeIndicator);
+    }
+  }
+
+  if (targetElement.className.includes("rgb-mode")) {
+    if (classOfRgbMode.includes("mode-on")) {
+      unsetMode(rgbModeIndicator);
+    }
+
+    if (classOfRgbMode.includes("mode-off")) {
+      if (classOfTrailMode.includes("mode-on")) {
+        unsetMode(trailModeIndicator);
+      }
+      setMode(rgbModeIndicator);
+    }
+  }
+}
+
+function setMode(targetElement) {
+  for (let elem of targetElement) {
+    elem.classList.add("mode-on");
+    elem.classList.remove("mode-off");
+  }
+}
+
+function unsetMode(targetElement) {
+  for (let elem of targetElement) {
+    elem.classList.add("mode-off");
+    elem.classList.remove("mode-on");
   }
 }
