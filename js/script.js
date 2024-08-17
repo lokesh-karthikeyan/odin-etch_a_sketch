@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", createGrids);
 
-function createGrids(size = 16) {
-  if (typeof size !== "Number") {
+function createGrids(size) {
+  if (size.type === "DOMContentLoaded") {
     size = 16;
   }
-
   for (let row = 0; row < size; row++) {
     let rows = document.createElement("div");
     rows.classList.add("rows");
@@ -169,4 +168,38 @@ function isRgbMode(e) {
 function randomNumberGenerator(length) {
   let randomNumber = Math.floor(Math.random() * length);
   return randomNumber;
+}
+
+function getGridSize() {
+  let size = getPromptInput();
+
+  let gridContainer = document.querySelector(".container-box");
+  let gridContainerRows = document.querySelectorAll(".rows");
+
+  gridContainer.style.transform = "scale(0.0)";
+
+  setTimeout(() => {
+    gridContainer.style = "";
+  }, 1000);
+
+  for (let row of gridContainerRows) {
+    gridContainer.removeChild(row);
+  }
+
+  createGrids(size);
+}
+
+function getPromptInput() {
+  let size = prompt("Enter the size: ");
+
+  if (isNaN(size)) {
+    alert("Enter the valid size (1 to 100)");
+    size = getPromptInput();
+  }
+
+  if (Number(size) < 1 || Number(size) > 100) {
+    alert("Enter the valid size (1 to 100)");
+    size = getPromptInput();
+  }
+  return size;
 }
