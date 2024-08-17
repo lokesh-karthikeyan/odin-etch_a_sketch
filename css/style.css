@@ -69,6 +69,7 @@ body>* {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  transition: all .4s ease-in-out;
 }
 
 .trail-mode,
@@ -96,6 +97,7 @@ body>* {
   height: 40px;
   border-radius: 50%;
   margin: 25px 0;
+  transition: all .4s ease-in-out;
 }
 
 /**------ MAIN ELEMENT CONTENTS [CONTAINER - 02] ------**/
