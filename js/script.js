@@ -122,6 +122,36 @@ function unsetMode(targetElement) {
   }, 400);
 }
 
+let gridContainer = document.querySelector(".container-box");
+
+gridContainer.addEventListener("mouseover", drawContent);
+
+function drawContent(e) {
+  let targetElement = e.target;
+
+  if (!targetElement.className.includes("columns")) {
+    return;
+  }
+
+  let currentMode = [...document.querySelectorAll(".mode-on")];
+  let disabledMode = [...document.querySelectorAll(".mode-off")];
+  let currentSelection;
+
+  for (index = 0; index < 1; index++) {
+    currentSelection = currentMode[index].className;
+  }
+
+  if (disabledMode.length === 4) {
+    isFill();
+  }
+
+  if (currentSelection.includes("trail-mode")) {
+    isTrailMode(targetElement);
+  } else {
+    isRgbMode(targetElement);
+  }
+}
+
 function isTrailMode(e) {
   let opacityHexValues = [
     "FF",
