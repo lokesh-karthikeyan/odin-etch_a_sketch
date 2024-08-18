@@ -237,3 +237,19 @@ function isFill(e) {
   }
   targetElement.style.backgroundColor = "black";
 }
+
+function isReset() {
+  let gridContainer = document.querySelector(".container-box");
+  let columns = [...document.querySelectorAll(".columns")];
+
+  gridContainer.style.transform = "rotateY(90deg)";
+
+  setTimeout(() => {
+    gridContainer.style = "";
+    for (let col of columns) {
+      col.style.backgroundColor = "hsl(360, 100%, 100%)";
+    }
+    let fillMode = document.querySelector(".fill");
+    fillMode.checked = true;
+  }, 500);
+}
