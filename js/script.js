@@ -42,12 +42,30 @@ topOuterContainer.addEventListener("click", getClickedTarget);
 function getClickedTarget(e) {
   let clickedElement = e.target;
 
-  if (clickedElement.className.includes("trail-mode")) {
-    compareModeStatus(clickedElement);
-  }
+  if (
+    clickedElement.className.includes("trail-mode") ||
+    clickedElement.className.includes("rgb-mode")
+  ) {
+    if (clickedElement.className.includes("trail-mode")) {
+      compareModeStatus(clickedElement);
+    }
 
-  if (clickedElement.className.includes("rgb-mode")) {
-    compareModeStatus(clickedElement);
+    if (clickedElement.className.includes("rgb-mode")) {
+      compareModeStatus(clickedElement);
+    }
+    checkRadioSelection();
+  }
+}
+
+function checkRadioSelection() {
+  let radioOption = document.querySelector("input[type = 'radio']:checked");
+  let enabledMode = [...document.querySelectorAll(".mode-on")];
+
+  if (enabledMode.length > 0) {
+    if (radioOption.className === "erase") {
+      let fillOption = document.querySelector(".fill");
+      fillOption.checked = true;
+    }
   }
 }
 
@@ -148,7 +166,6 @@ function drawContent(e) {
         isErase(targetElement);
         break;
     }
-    // isFill(targetElement);
   } else {
     for (index = 0; index < 1; index++) {
       currentSelection = currentMode[index].className;
@@ -246,10 +263,7 @@ function selectRadioOption(e) {
     let enabledMode = [...document.getElementsByClassName("mode-on")];
 
     if (enabledMode.length > 0) {
-      // for (let mode of enabledMode) {
       unsetMode(enabledMode);
-      console.log(enabledMode);
-      // }
     }
   }
 
