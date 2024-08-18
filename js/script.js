@@ -79,16 +79,30 @@ function compareModeStatus(targetElement) {
 
 function setMode(targetElement) {
   for (let elem of targetElement) {
+    elem.style.transform = "scale(0.0)";
     elem.classList.add("mode-on");
     elem.classList.remove("mode-off");
   }
+
+  setTimeout(() => {
+    for (let elem of targetElement) {
+      elem.style = "";
+    }
+  }, 400);
 }
 
 function unsetMode(targetElement) {
   for (let elem of targetElement) {
+    elem.style.transform = "scale(0.0)";
     elem.classList.add("mode-off");
     elem.classList.remove("mode-on");
   }
+
+  setTimeout(() => {
+    for (let elem of targetElement) {
+      elem.style = "";
+    }
+  }, 400);
 }
 
 let iterator = 0;
