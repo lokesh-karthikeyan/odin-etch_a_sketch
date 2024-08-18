@@ -228,3 +228,12 @@ function isErase(e) {
   }
   targetElement.style.backgroundColor = color;
 }
+
+function isFill(e) {
+  let targetElement = e.target;
+
+  if (!targetElement.className.includes("columns")) {
+    return;
+  }
+  targetElement.style.backgroundColor = "black";
+}
