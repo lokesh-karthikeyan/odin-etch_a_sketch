@@ -1,7 +1,15 @@
 let selectedColor = "#000000";
 let iterator = 0;
 
+/**************************************************************************************************
+ * Event Listener's objective: Calls a helper function to set default actions when page loads.    *
+ **************************************************************************************************/
+
 document.addEventListener("DOMContentLoaded", isDOMLoaded);
+
+/*********************************************************************************
+ * Function objective: Calls f() to create grids & enable "Trail" mode.          *
+ *********************************************************************************/
 
 function isDOMLoaded() {
   let drawContent = document.querySelector("input[type = 'radio']:checked");
@@ -20,6 +28,10 @@ function isDOMLoaded() {
   }
 }
 
+/*****************************************************************************
+ * Function objective: It takes size from the parameter & create grids.      *
+ *****************************************************************************/
+
 function createGrids(size) {
   for (let row = 0; row < size; row++) {
     let rows = document.createElement("div");
@@ -35,9 +47,19 @@ function createGrids(size) {
   }
 }
 
+/********************************************************************************************
+ * Event Listener's objective: Used Event delegation (click) to target the contents         *
+ * inside the container.                                                                    *
+ ********************************************************************************************/
+
 let topOuterContainer = document.querySelector(".outer-container-top");
 
 topOuterContainer.addEventListener("click", getClickedTarget);
+
+/************************************************************************************
+ * Function objective: Capture the target and sends as a parameter                  *
+ * to another f(). It also calls another f() to check "Radio" button's status.      *
+ ************************************************************************************/
 
 function getClickedTarget(e) {
   let clickedElement = e.target;
@@ -57,6 +79,11 @@ function getClickedTarget(e) {
   }
 }
 
+/*******************************************************************************
+ * Function objective: It checks the radio button's status when the "Trail"    *
+ * (or) "RGB" mode is selected. To toggle it from "Erase" to "Fill" mode.      *
+ *******************************************************************************/
+
 function checkRadioSelection() {
   let radioOption = document.querySelector("input[type = 'radio']:checked");
   let enabledMode = [...document.querySelectorAll(".mode-on")];
@@ -68,6 +95,11 @@ function checkRadioSelection() {
     }
   }
 }
+
+/**************************************************************************
+ * Function objective: Compares the selected mode with the other mode.    *
+ * It toggles back the other mode if it's active.                         *
+ **************************************************************************/
 
 function compareModeStatus(targetElement) {
   let trailModeIndicator = [
@@ -112,6 +144,11 @@ function compareModeStatus(targetElement) {
   }
 }
 
+/********************************************************************
+ * Function objective: Changes the color and scales down & revert   *
+ * back to the previous size to indicate it was enabled.            *
+ ********************************************************************/
+
 function setMode(targetElement) {
   for (let elem of targetElement) {
     elem.style.transform = "scale(0.0)";
@@ -125,6 +162,11 @@ function setMode(targetElement) {
     }
   }, 400);
 }
+
+/********************************************************************
+ * Function objective: Changes the color and scales down & revert   *
+ * back to the previous size to indicate it was disabled.           *
+ ********************************************************************/
 
 function unsetMode(targetElement) {
   for (let elem of targetElement) {
@@ -140,9 +182,19 @@ function unsetMode(targetElement) {
   }, 400);
 }
 
+/***********************************************************************************
+ * Event Listener's objective: It's a "mouseover" event, where it triggers         *
+ * an event even for the child elements inside the target container.               *
+ ***********************************************************************************/
+
 let gridContainer = document.querySelector(".container-box");
 
 gridContainer.addEventListener("mouseover", drawContent);
+
+/*********************************************************************************
+ * Function objective: Look for the mode's status & "radio" button options       *
+ * and fill the color with the appropriate colors and effects.                   *
+ *********************************************************************************/
 
 function drawContent(e) {
   let targetElement = e.target;
@@ -179,6 +231,10 @@ function drawContent(e) {
   }
 }
 
+/**********************************************************************
+ * Function objective: Enables the trail mode for the parameter.      *
+ **********************************************************************/
+
 function isTrailMode(element) {
   let opacityHexValues = [
     "FF",
@@ -212,6 +268,10 @@ function isTrailMode(element) {
   }
 }
 
+/********************************************************************
+ * Function objective: Enables the RGB mode for the parameter.      *
+ ********************************************************************/
+
 function isRgbMode(element) {
   let hexColorCharacters = [
     "0",
@@ -241,36 +301,28 @@ function isRgbMode(element) {
   element.style.backgroundColor = hashForHexColor;
 }
 
+/********************************************************************************
+ * Function objective: Helper f() to generate random numbers for RGB mode.      *
+ ********************************************************************************/
+
 function randomNumberGenerator(length) {
   let randomNumber = Math.floor(Math.random() * length);
   return randomNumber;
 }
 
+/***********************************************************************************
+ * Event Listener's objective: A "click" event on the button's container           *
+ * to get the input from the user.                                                 *
+ ***********************************************************************************/
+
 let resizeGrid = document.querySelector(".container-button-left");
 
 resizeGrid.addEventListener("click", getGridSize);
 
-let inputOptions = [...document.getElementsByName("draw")];
-
-for (let input of inputOptions) {
-  input.addEventListener("change", selectRadioOption);
-}
-
-function selectRadioOption(e) {
-  let targetElemClass = e.target.className;
-
-  if (targetElemClass === "erase") {
-    let enabledMode = [...document.getElementsByClassName("mode-on")];
-
-    if (enabledMode.length > 0) {
-      unsetMode(enabledMode);
-    }
-  }
-
-  if (targetElemClass === "reset") {
-    isReset();
-  }
-}
+/*******************************************************************************
+ * Function objective: It prompts the user to enter input via prompt box       *
+ * and passes the input to create grid sizes. It removes existing grids.       *
+ *******************************************************************************/
 
 function getGridSize() {
   let size = getPromptInput();
@@ -296,6 +348,11 @@ function getGridSize() {
   createGrids(size);
 }
 
+/*****************************************************************************
+ * Function objective: Helper f() to get the valid input from the user.      *
+ * If it's invalid it recursively calls this f() to get valid input.         *
+ *****************************************************************************/
+
 function getPromptInput() {
   let size = prompt("Enter the size: ");
 
@@ -320,13 +377,58 @@ function getPromptInput() {
   }
 }
 
+/*****************************************************************************************
+ * Event Listener's objective: Look out for any change happens in the input elements     *
+ * with the name "draw". It's a "change" event triggers on change.                       *
+ *****************************************************************************************/
+
+let inputOptions = [...document.getElementsByName("draw")];
+
+for (let input of inputOptions) {
+  input.addEventListener("change", selectRadioOption);
+}
+
+/**************************************************************************************
+ * Function objective: Helper f() to call other f() based on the "radio" button       *
+ * choice selected from the UI.                                                       *
+ **************************************************************************************/
+
+function selectRadioOption(e) {
+  let targetElemClass = e.target.className;
+
+  if (targetElemClass === "erase") {
+    let enabledMode = [...document.getElementsByClassName("mode-on")];
+
+    if (enabledMode.length > 0) {
+      unsetMode(enabledMode);
+    }
+  }
+
+  if (targetElemClass === "reset") {
+    isReset();
+  }
+}
+
+/*********************************************************************************
+ * Function objective: Sets the color to white which acts as an Erase mode.      *
+ *********************************************************************************/
+
 function isErase(element) {
   element.style.backgroundColor = "hsl(360, 100%, 100%)";
 }
 
+/************************************************************************
+ * Function objective: Sets the color from the global color value.      *
+ ************************************************************************/
+
 function isFill(element) {
   element.style.backgroundColor = selectedColor;
 }
+
+/*****************************************************************************
+ * Function objective: Removes all existing colors filled in the grids       *
+ * and toggles back to the "Fill" option.                                    *
+ *****************************************************************************/
 
 function isReset() {
   let gridContainer = document.querySelector(".container-box");
@@ -344,9 +446,20 @@ function isReset() {
   }, 500);
 }
 
+/*****************************************************************************
+ * Event Listener's objective: Look out for any changes happening in the     *
+ * "Color" type of input tag. It's a "change" event triggers on change.      *
+ *****************************************************************************/
+
 let colorPicker = document.querySelector("input[type = 'color']");
 
 colorPicker.addEventListener("change", isChooseColor);
+
+/********************************************************************
+ * Function objective: Gets the color value from the input and      *
+ * changes the color of the "Color Picker" icon and also assigns    *
+ * the new color value to the global color value.                   *
+ ********************************************************************/
 
 function isChooseColor(e) {
   let targetElement = e.target;
@@ -358,16 +471,30 @@ function isChooseColor(e) {
   colorPalette.style.backgroundColor = selectedColor;
 }
 
+/********************************************************************************
+ * Event Listener's objective: It's to generate an hover like effect on the     *
+ * element. It triggers on "mouseenter" to the element and reverts when it      *
+ * "mouseleaves" the target.                                                    *
+ ********************************************************************************/
+
 let sliderContainer = document.querySelector(".container-button-slider");
 
 sliderContainer.addEventListener("mouseenter", setHoverEffect);
 sliderContainer.addEventListener("mouseleave", unsetHoverEffect);
+
+/*********************************************************************************
+ * Function objective: Sets hover effect for the border to change its color.     *
+ *********************************************************************************/
 
 function setHoverEffect() {
   let slider = document.querySelector(".slider");
 
   slider.style.boxShadow = "0 0 0 15px #82ff62";
 }
+
+/*********************************************************************************
+ * Function objective: Unsets hover effect for the border to change its color.   *
+ *********************************************************************************/
 
 function unsetHoverEffect() {
   let slider = document.querySelector(".slider");
