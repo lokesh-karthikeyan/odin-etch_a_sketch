@@ -217,3 +217,14 @@ function getPromptInput() {
     return size;
   }
 }
+
+function isErase(e) {
+  let color = "hsl(360, 100%, 100%)";
+
+  let targetElement = e.target;
+
+  if (!targetElement.className.includes("columns")) {
+    return;
+  }
+  targetElement.style.backgroundColor = color;
+}
