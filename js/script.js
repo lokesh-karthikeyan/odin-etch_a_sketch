@@ -176,11 +176,16 @@ function getGridSize() {
   let gridContainer = document.querySelector(".container-box");
   let gridContainerRows = document.querySelectorAll(".rows");
 
+  if (size === undefined) {
+    return;
+  }
+
+  gridContainer.style.backgroundColor = "hsl(0, 0%, 0%)";
   gridContainer.style.transform = "scale(0.0)";
 
   setTimeout(() => {
     gridContainer.style = "";
-  }, 1000);
+  }, 500);
 
   for (let row of gridContainerRows) {
     gridContainer.removeChild(row);
@@ -192,14 +197,23 @@ function getGridSize() {
 function getPromptInput() {
   let size = prompt("Enter the size: ");
 
+  if (size === null) {
+    return;
+  }
+
   if (isNaN(size)) {
     alert("Enter the valid size (1 to 100)");
     size = getPromptInput();
+    return size;
   }
 
   if (Number(size) < 1 || Number(size) > 100) {
     alert("Enter the valid size (1 to 100)");
     size = getPromptInput();
+    return size;
   }
-  return size;
+
+  if (Number(size) >= 1 || Number(size) <= 100) {
+    return size;
+  }
 }
