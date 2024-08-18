@@ -1,9 +1,26 @@
-document.addEventListener("DOMContentLoaded", createGrids);
+let selectedColor = "#000000";
+let iterator = 0;
+
+document.addEventListener("DOMContentLoaded", isDOMLoaded);
+
+function isDOMLoaded() {
+  let drawContent = document.querySelector("input[type = 'radio']:checked");
+
+  if (drawContent.className.includes("fill")) {
+    createGrids(16);
+
+    let enableMode = [
+      ...document.getElementsByClassName("trail-mode-indicator"),
+    ];
+    let disableMode = [
+      ...document.getElementsByClassName("rgb-mode-indicator"),
+    ];
+    setMode(enableMode);
+    unsetMode(disableMode);
+  }
+}
 
 function createGrids(size) {
-  if (size.type === "DOMContentLoaded") {
-    size = 16;
-  }
   for (let row = 0; row < size; row++) {
     let rows = document.createElement("div");
     rows.classList.add("rows");
@@ -104,8 +121,6 @@ function unsetMode(targetElement) {
     }
   }, 400);
 }
-
-let iterator = 0;
 
 function isTrailMode(e) {
   let opacityHexValues = [
@@ -267,8 +282,6 @@ function isReset() {
     fillMode.checked = true;
   }, 500);
 }
-
-let selectedColor = "#000000";
 
 function isChooseColor(e) {
   let targetElement = e.target;
