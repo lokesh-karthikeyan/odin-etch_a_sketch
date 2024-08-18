@@ -138,7 +138,17 @@ function drawContent(e) {
   let currentSelection;
 
   if (disabledMode.length === 4) {
-    isFill(targetElement);
+    let radioOption = document.querySelector("input[type = 'radio']:checked");
+
+    switch (radioOption.className) {
+      case "fill":
+        isFill(targetElement);
+        break;
+      case "erase":
+        isErase(targetElement);
+        break;
+    }
+    // isFill(targetElement);
   } else {
     for (index = 0; index < 1; index++) {
       currentSelection = currentMode[index].className;
@@ -219,6 +229,35 @@ function randomNumberGenerator(length) {
   return randomNumber;
 }
 
+let resizeGrid = document.querySelector(".container-button-left");
+
+resizeGrid.addEventListener("click", getGridSize);
+
+let inputOptions = [...document.getElementsByName("draw")];
+
+for (let input of inputOptions) {
+  input.addEventListener("change", selectRadioOption);
+}
+
+function selectRadioOption(e) {
+  let targetElemClass = e.target.className;
+
+  if (targetElemClass === "erase") {
+    let enabledMode = [...document.getElementsByClassName("mode-on")];
+
+    if (enabledMode.length > 0) {
+      // for (let mode of enabledMode) {
+      unsetMode(enabledMode);
+      console.log(enabledMode);
+      // }
+    }
+  }
+
+  if (targetElemClass === "reset") {
+    isReset();
+  }
+}
+
 function getGridSize() {
   let size = getPromptInput();
 
@@ -267,19 +306,12 @@ function getPromptInput() {
   }
 }
 
-function isErase(e) {
-  let color = "hsl(360, 100%, 100%)";
-
-  let targetElement = e.target;
-
-  if (!targetElement.className.includes("columns")) {
-    return;
-  }
-  targetElement.style.backgroundColor = color;
+function isErase(element) {
+  element.style.backgroundColor = "hsl(360, 100%, 100%)";
 }
 
 function isFill(element) {
-  element.style.backgroundColor = selectedColor;
+  element.style.backgroundColor = "coral";
 }
 
 function isReset() {
