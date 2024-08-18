@@ -253,3 +253,18 @@ function isReset() {
     fillMode.checked = true;
   }, 500);
 }
+
+let selectedColor = "#000000";
+
+function isChooseColor(e) {
+  let targetElement = e.target;
+
+  if (targetElement.value === undefined || targetElement.value === null) {
+    return;
+  }
+  selectedColor = targetElement.value;
+
+  let colorPalette = document.querySelector(".color-picker-icon");
+
+  colorPalette.style.backgroundColor = selectedColor;
+}
