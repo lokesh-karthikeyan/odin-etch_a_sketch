@@ -268,3 +268,20 @@ function isChooseColor(e) {
 
   colorPalette.style.backgroundColor = selectedColor;
 }
+
+let sliderContainer = document.querySelector(".container-button-slider");
+
+sliderContainer.addEventListener("mouseenter", setHoverEffect);
+sliderContainer.addEventListener("mouseleave", unsetHoverEffect);
+
+function setHoverEffect() {
+  let slider = document.querySelector(".slider");
+
+  slider.style.boxShadow = "0 0 0 15px #82ff62";
+}
+
+function unsetHoverEffect() {
+  let slider = document.querySelector(".slider");
+
+  slider.style = "";
+}
