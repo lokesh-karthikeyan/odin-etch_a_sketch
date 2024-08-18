@@ -325,7 +325,7 @@ function isErase(element) {
 }
 
 function isFill(element) {
-  element.style.backgroundColor = "coral";
+  element.style.backgroundColor = selectedColor;
 }
 
 function isReset() {
@@ -344,12 +344,13 @@ function isReset() {
   }, 500);
 }
 
+let colorPicker = document.querySelector("input[type = 'color']");
+
+colorPicker.addEventListener("change", isChooseColor);
+
 function isChooseColor(e) {
   let targetElement = e.target;
 
-  if (targetElement.value === undefined || targetElement.value === null) {
-    return;
-  }
   selectedColor = targetElement.value;
 
   let colorPalette = document.querySelector(".color-picker-icon");
