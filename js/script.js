@@ -137,22 +137,22 @@ function drawContent(e) {
   let disabledMode = [...document.querySelectorAll(".mode-off")];
   let currentSelection;
 
-  for (index = 0; index < 1; index++) {
-    currentSelection = currentMode[index].className;
-  }
-
   if (disabledMode.length === 4) {
-    isFill();
-  }
-
-  if (currentSelection.includes("trail-mode")) {
-    isTrailMode(targetElement);
+    isFill(targetElement);
   } else {
-    isRgbMode(targetElement);
+    for (index = 0; index < 1; index++) {
+      currentSelection = currentMode[index].className;
+    }
+
+    if (currentSelection.includes("trail-mode")) {
+      isTrailMode(targetElement);
+    } else {
+      isRgbMode(targetElement);
+    }
   }
 }
 
-function isTrailMode(e) {
+function isTrailMode(element) {
   let opacityHexValues = [
     "FF",
     "F2",
@@ -177,13 +177,7 @@ function isTrailMode(e) {
     "00",
   ];
 
-  let targetElement = e.target;
-
-  if (!(targetElement.className === "columns")) {
-    return 0;
-  }
-
-  targetElement.style.backgroundColor = color + opacityHexValues[iterator];
+  element.style.backgroundColor = selectedColor + opacityHexValues[iterator];
   iterator++;
 
   if (iterator === opacityHexValues.length) {
@@ -191,7 +185,7 @@ function isTrailMode(e) {
   }
 }
 
-function isRgbMode(e) {
+function isRgbMode(element) {
   let hexColorCharacters = [
     "0",
     "1",
@@ -211,17 +205,13 @@ function isRgbMode(e) {
     "F",
   ];
   let hashForHexColor = "#";
-  let targetElement = e.target;
-
-  if (!(targetElement.className === "columns")) {
-    return 0;
-  }
 
   for (let index = 0; index < 6; index++) {
     let position = randomNumberGenerator(hexColorCharacters.length);
     hashForHexColor += hexColorCharacters[position];
   }
-  targetElement.style.backgroundColor = hashForHexColor;
+
+  element.style.backgroundColor = hashForHexColor;
 }
 
 function randomNumberGenerator(length) {
@@ -288,13 +278,8 @@ function isErase(e) {
   targetElement.style.backgroundColor = color;
 }
 
-function isFill(e) {
-  let targetElement = e.target;
-
-  if (!targetElement.className.includes("columns")) {
-    return;
-  }
-  targetElement.style.backgroundColor = "black";
+function isFill(element) {
+  element.style.backgroundColor = selectedColor;
 }
 
 function isReset() {
