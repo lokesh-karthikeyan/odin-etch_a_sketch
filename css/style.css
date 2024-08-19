@@ -63,13 +63,15 @@ body>* {
 
 .container-box {
   height: 700px;
-  min-width: 700px;
+  max-width: 700px;
   background-color: hsl(360, 100%, 100%);
   border: solid 10px #4db992;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   transition: all .4s ease-in-out;
+  flex-shrink: 0;
+  flex-basis: 100%;
 }
 
 .trail-mode,
